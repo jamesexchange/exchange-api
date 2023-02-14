@@ -19,6 +19,16 @@ services:
     networks:
       - internal
 
+  poll:
+    image: jamesexchange/exchange-server
+    env_file: docker-compose.env
+    environment:      
+      SERVICES: poll
+    depends_on:
+      - nats
+    networks:
+      - internal
+
   opus.usdt.exchange:
     image: jamesexchange/exchange-server
     env_file: docker-compose.env
